@@ -2,16 +2,20 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Welcome.cshtml";
     var lastProyect = "";
 }
+
 @using QUICKIFYRepository;
+
+
 
 <h3><strong>Proyectos</strong></h3>
 <hr />
 <p>
     @Html.ActionLink("Crear Proyecto", "Create", null, new { @class = "btn btn-primary" })
 </p>
+
 
 
 @foreach (var item in Model)
@@ -23,11 +27,16 @@
         {
             <br />
             <tr>
-                <th style="background-color: #7b787d; color:white;">@Html.DisplayFor(modelItem => SI657_Entities.getInstance().Proyecto.Find(item.Proyecto_Id).Nombre)</th>
-            </tr>
+                <th style="background-color: #3b375b; font-size: 20px; color:white;">
+                    @Html.DisplayFor(modelItem => SI657_Entities.getInstance().Proyecto.Find(item.Proyecto_Id).Nombre)
+                @Html.ActionLink("Abrir Proyecto", "Temporal", new { name = SI657_Entities.getInstance().Proyecto.Find(item.Proyecto_Id).Nombre } , new { @class = "btn btn-primary", @style = "float: right;" })
+            </th>
 
 
-        }
+        </tr>
+
+
+    }
         <tr>
             <td style="color:black;">
                 <strong>@Html.DisplayFor(modelItem => SI657_Entities.getInstance().Usuario.Find(item.Usuario_Id).Cargo.Nombre)</strong>
@@ -36,6 +45,7 @@
             </td>
 
         </tr>
+
     </table>
 
 

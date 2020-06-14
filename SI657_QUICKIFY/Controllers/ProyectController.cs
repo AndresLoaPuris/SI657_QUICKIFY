@@ -9,9 +9,17 @@ namespace SI657_QUICKIFY.Controllers
 {
     public class ProyectController : Controller
     {
+        public static string Static_Name { get; set; }
+
         public ActionResult Index() {
 
             return View(SI657_Entities.getInstance().Equipo.ToList());
+        }
+
+        public ActionResult Temporal(string name)
+        {
+            Static_Name = name;
+            return View();
         }
 
         public ActionResult Create()

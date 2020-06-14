@@ -1950,6 +1950,8 @@
     <Content Include="Views\Auth\SignUp.cshtml" />
     <Content Include="Views\Proyect\Create.cshtml" />
     <Content Include="Views\Proyect\Index.cshtml" />
+    <Content Include="Views\Shared\_Welcome.cshtml" />
+    <Content Include="Views\Proyect\Temporal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
