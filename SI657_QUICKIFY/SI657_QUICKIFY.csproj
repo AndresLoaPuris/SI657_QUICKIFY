@@ -127,6 +127,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BacklogController.cs" />
+    <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProyectController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1951,11 +1953,12 @@
     <Content Include="Views\Proyect\Create.cshtml" />
     <Content Include="Views\Proyect\Index.cshtml" />
     <Content Include="Views\Shared\_Welcome.cshtml" />
-    <Content Include="Views\Proyect\Temporal.cshtml" />
+    <Content Include="Views\Board\Kanban.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Backlog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

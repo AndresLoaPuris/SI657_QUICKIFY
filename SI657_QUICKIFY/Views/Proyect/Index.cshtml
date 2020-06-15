@@ -27,18 +27,18 @@
         {
             <br />
             <tr>
-                <th style="background-color: #3b375b; font-size: 20px; color:white;">
+                <th style="background-color: #3b375b; font-size: 18px; border-radius: 12px; color:white;">
+                    &nbsp;&nbsp;
                     @Html.DisplayFor(modelItem => SI657_Entities.getInstance().Proyecto.Find(item.Proyecto_Id).Nombre)
-                @Html.ActionLink("Abrir Proyecto", "Temporal", new { name = SI657_Entities.getInstance().Proyecto.Find(item.Proyecto_Id).Nombre } , new { @class = "btn btn-primary", @style = "float: right;" })
-            </th>
-
-
-        </tr>
+                    @Html.ActionLink("Abrir Proyecto", "PassKanban", new { name = SI657_Entities.getInstance().Proyecto.Find(item.Proyecto_Id).Nombre }, new { @class = "btn btn-primary", @style = "float: right;" })
+                </th>
+            </tr>
 
 
     }
         <tr>
             <td style="color:black;">
+                &nbsp;&nbsp;
                 <strong>@Html.DisplayFor(modelItem => SI657_Entities.getInstance().Usuario.Find(item.Usuario_Id).Cargo.Nombre)</strong>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 @Html.DisplayFor(modelItem => SI657_Entities.getInstance().Usuario.Find(item.Usuario_Id).Nombre)

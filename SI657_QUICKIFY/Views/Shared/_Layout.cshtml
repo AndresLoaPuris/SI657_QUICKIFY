@@ -22,7 +22,7 @@
 
         <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index","Home")">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Kanban","Board")">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-share-alt"></i>
                 </div>
@@ -32,18 +32,18 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Bono_Corporative","Transactions")">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Bono Corporativo</span>
+                <a class="nav-link" href="@Url.Action("Index","Backlog")">
+                    <i class="fas fa-fw fa-list-alt"></i>
+                    <span>Backlog</span>
                 </a>
             </li>
 
             <br>
 
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Registered_Operations","Transactions")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Mis Operaciones</span>
+                <a class="nav-link" href="@Url.Action("Kanban","Board")">
+                    <i class="fas fa-fw fa-columns"></i>
+                    <span>Board</span>
                 </a>
             </li>
 
@@ -67,7 +67,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <h3><strong>@ProyectController.Static_Name</strong></h3>
+                    <h4>&nbsp;<strong>@ProyectController.Static_Name</strong></h4>
 
                     <ul class="navbar-nav ml-auto">
 
@@ -77,7 +77,7 @@
 
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-900 medium">@User.Identity.Name</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-900 medium">@User.Identity.Name &nbsp;&nbsp;</span>
                                     <img class="img-profile rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ95GrFuesVVuyyfXOSimzstFtyiQ594yP-DNe0UfbUs_kyqqrM&usqp=CAU">
                                 </a>
 

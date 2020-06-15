@@ -1,4 +1,5 @@
 ﻿using QUICKIFYRepository;
+using QUICKIFYService.Proyect;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace SI657_QUICKIFY.Controllers
 {
     public class ProyectController : Controller
     {
+        private ProyectService proyectService = new ProyectService();
         public static string Static_Name { get; set; }
 
         public ActionResult Index() {
@@ -16,10 +18,10 @@ namespace SI657_QUICKIFY.Controllers
             return View(SI657_Entities.getInstance().Equipo.ToList());
         }
 
-        public ActionResult Temporal(string name)
+        public ActionResult PassKanban(string name)
         {
             Static_Name = name;
-            return View();
+            return RedirectToAction("Kanban", "Board");
         }
 
         public ActionResult Create()
@@ -34,33 +36,9 @@ namespace SI657_QUICKIFY.Controllers
             string result = "Error! Proyect Is Not Complete!";
             if (nombre != null && usuarios != null) {
 
-                Proyecto proyecto = new Proyecto();
-                proyecto.Nombre = nombre;
-                proyecto.isDelete = 0;
-                SI657_Entities.getInstance().Proyecto.Add(proyecto);
-                SI657_Entities.getInstance().SaveChanges();
-                int Last_Proyect = SI657_Entities.getInstance().Proyecto.Max(p => p.Id);
+                proyectService.addProyect(nombre);
+                proyectService.addTeam(proyectService.lastProyect(), lider, usuarios);
 
-                Equipo tempequipo = new Equipo();
-                tempequipo.Proyecto_Id = Last_Proyect;
-                Usuario tempLider = SI657_Entities.getInstance().Usuario.Where(s => s.Nombre == lider).FirstOrDefault<Usuario>();
-                tempequipo.Usuario_Id = tempLider.Id;
-                tempequipo.isAdmin = 1;
-                SI657_Entities.getInstance().Equipo.Add(tempequipo);
-                //SI657_Entities.getInstance().SaveChanges();
-
-                foreach (var item in usuarios) {
-
-                    Equipo equipo = new Equipo();
-                    equipo.Proyecto_Id = Last_Proyect;
-                    Usuario temp = SI657_Entities.getInstance().Usuario.Where(s => s.Nombre == item.Nombre).FirstOrDefault<Usuario>();
-                    equipo.Usuario_Id = temp.Id;
-                    equipo.isAdmin = 0;
-                    SI657_Entities.getInstance().Equipo.Add(equipo);
-                    SI657_Entities.getInstance().SaveChanges();
-                }
-
-                SI657_Entities.getInstance().SaveChanges();
                 result = "Success! Proyect Is Complete!";
             }
             

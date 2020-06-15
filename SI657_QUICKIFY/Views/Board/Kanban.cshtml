@@ -1,0 +1,203 @@
+﻿@model IEnumerable<QUICKIFYRepository.HistoriaUsuario>
+
+@{
+    ViewBag.Title = "Kanban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*
+
+    <h2>Kanban</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaEstimada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prioridad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sprint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoKanban)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isDelete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyecto_Id)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaEstimada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prioridad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sprint)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstadoKanban)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isDelete)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proyecto_Id)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+
+
+    -----------------------------*@
+
+
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h4 mb-0 text-gray-800"><strong>Tablero Kanban</strong></h1>
+    <p class="h5 text text-gray-800"><strong>@DateTime.Now.ToString("dddd, dd MMMM yyyy")</strong></p>
+</div>
+<br />
+<!-- Content Row -->
+<!-- Content Row -->
+
+<div class="row">
+
+    <!-- Pie Chart -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"><strong>POR HACER</strong></h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+
+                @foreach (var item in Model)
+                {
+
+                    if (item.EstadoKanban == 1)
+                    {
+                        <!-- AQUI TARJETAS -->
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">@item.Titulo</div>
+                                        <div class="text-xs font-weight-bold text text-uppercase mb-1">@item.FechaEstimada.ToString("dddd, dd MMMM yyyy") </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"><strong>EN CURSO</strong></h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+
+
+                @foreach (var item in Model)
+                {
+
+                    if (item.EstadoKanban == 2)
+                    {
+                        <!-- AQUI TARJETAS -->
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">@item.Titulo</div>
+                                        <div class="text-xs font-weight-bold text text-uppercase mb-1">@item.FechaEstimada.ToString("dddd, dd MMMM yyyy") </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"><strong>TERMINADO</strong></h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                @foreach (var item in Model)
+                {
+
+                    if (item.EstadoKanban == 3)
+                    {
+                        <!-- AQUI TARJETAS -->
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">@item.Titulo</div>
+                                        <div class="text-xs font-weight-bold text text-uppercase mb-1">@item.FechaEstimada.ToString("dddd, dd MMMM yyyy") </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
