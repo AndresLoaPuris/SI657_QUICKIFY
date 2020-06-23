@@ -10,5 +10,10 @@ namespace QUICKIFYRepository.Board
 	{
 
 		public SI657_Entities db = SI657_Entities.getInstance();
+
+		public IEnumerable<HistoriaUsuario> getUserStories(string proyectName)
+		{
+			return db.HistoriaUsuario.ToList().Where(s => s.isDelete == 0 && s.Proyecto.Nombre == proyectName);
+		}
 	}
 }

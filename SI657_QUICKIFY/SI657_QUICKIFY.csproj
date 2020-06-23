@@ -1955,7 +1955,6 @@
     <Content Include="Views\Proyect\Index.cshtml" />
     <Content Include="Views\Shared\_Welcome.cshtml" />
     <Content Include="Views\Board\Kanban.cshtml" />
-    <Content Include="Views\Backlog\Temporal.cshtml" />
     <Content Include="Views\Backlog\Index.cshtml" />
     <Content Include="Views\Backlog\Edit.cshtml" />
     <Content Include="Views\Backlog\Create.cshtml" />

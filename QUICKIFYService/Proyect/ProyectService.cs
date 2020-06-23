@@ -16,6 +16,12 @@ namespace QUICKIFYService.Proyect
 			proyectRepository.addProyect(nombre);
 		}
 
+		public IEnumerable<Proyecto> getProyects(string email)
+		{
+			return proyectRepository.getProyects(email);
+		}
+
+
 		public int lastProyect() {
 			return proyectRepository.lastProyect();
 		}

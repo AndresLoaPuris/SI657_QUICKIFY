@@ -11,13 +11,18 @@ namespace QUICKIFYRepository
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Tarea
     {
         public int Id { get; set; }
+        [Required]
         public string Titulo { get; set; }
+        [Required]
         public string Descripcion { get; set; }
+        [Required]
         public int isDelete { get; set; }
+        [Required]
         public int HistoriaUsuario_Id { get; set; }
     
         public virtual HistoriaUsuario HistoriaUsuario { get; set; }

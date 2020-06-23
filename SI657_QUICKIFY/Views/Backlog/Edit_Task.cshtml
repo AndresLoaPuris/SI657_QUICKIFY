@@ -23,8 +23,7 @@
             <div class="form-group row">
                 <div class="col-sm-8 mb-3 mb-sm-3">
                     <h6 style="color: black;">Titulo</h6>
-                    @*<textarea Id="Backlog_txt_Descripcion_HU" class="form-control form-control-user" placeholder="Escribe aquí ..."></textarea>*@
-                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @Id = "Backlog_int_Prioridad", @class = "form-control form-control-user", @style = "color: black;" } })
+                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @id = "txt_Task_Titulo", @class = "form-control form-control-user", @style = "color: black;" } })
                 </div>
             </div>
 
@@ -36,17 +35,16 @@
             <div class="form-group row">
                 <div class="col-sm-8 mb-3 mb-sm-3">
                     <h6 style="color: black;">Descripcion</h6>
-                    @*<textarea Id="Backlog_txt_Descripcion_HU" class="form-control form-control-user" placeholder="Escribe aquí ..."></textarea>*@
-                    @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @Id = "Backlog_int_Prioridad", @class = "form-control form-control-user", @style = "color: black;" } })
+                    @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @id = "txt_Task_Descripcion", @class = "form-control form-control-user", @style = "color: black;" } })
                 </div>
             </div>
 
         </div>
         <div class="col-md-offset-2 col-md-10">
 
-            @Html.ActionLink("Cancelar", "Index_Task", new { id = BacklogController.Static_HU }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Cancelar", "Index_Task", new { id = BacklogController.Static_HU }, new { @id = "btn_Task_Cancelar" , @class = "btn btn-danger" })
             &nbsp; &nbsp;&nbsp;
-            <input type="submit" value="Guardar" class="btn btn-primary" />
+            <input id = "btn_Task_Guardar" type="submit" value="Guardar" class="btn btn-primary" />
         </div>
     </div>
 }

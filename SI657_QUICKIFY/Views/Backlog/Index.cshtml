@@ -13,7 +13,7 @@
 <h4><strong>Historia de Usuario</strong></h4>
 <br />
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create", null, new { @id = "Alquiler_btn_Cancelar", @class = "btn btn-primary" })
+    @Html.ActionLink("Crear Nuevo", "Create", null, new { @id = "btn_HU_Crear", @class = "btn btn-primary" })
 </p>
 <br />
 <table style="color: black;" class="table">
@@ -51,8 +51,8 @@
     </td>
 
     <td>
-        @Html.ActionLink("Tareas", "Index_Task", new { id = item.Id }, new { @id = "Alquiler_btn_Cancelar", @class = "btn btn-primary" }) &nbsp;&nbsp;&nbsp;
-        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @id = "Alquiler_btn_Cancelar", @class = "btn btn-danger" })
+        @Html.ActionLink("Tareas", "Index_Task", new { id = item.Id }, new {  @class = "btn btn-primary" }) &nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new {  @class = "btn btn-danger" })
     </td>
 </tr>
     }

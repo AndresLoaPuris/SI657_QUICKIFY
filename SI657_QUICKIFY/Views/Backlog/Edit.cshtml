@@ -21,11 +21,11 @@
             <div class="col-sm-5 mb-3 mb-sm-3">
                 @*@Html.EditorFor(model => model.Cargo_Id, new { htmlAttributes = new { @class = "form-control form-control-user" } })*@
                 <h6 style="color: black;">Titulo</h6>
-                @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @Id = "Backlog_txt_Titulo_HU", @class = "form-control", @placeholder = "Ingresar Titulo" , @style = "color: black;" } })
+                @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @id = "txt_HU_Titulo", @class = "form-control", @placeholder = "Ingresar Titulo" , @style = "color: black;" } })
             </div>
             <div class="col-sm-3">
                 <h6 style="color: black;">Prioridad</h6>
-                @Html.EditorFor(model => model.Prioridad, new { htmlAttributes = new { @Id = "Backlog_int_Prioridad", @class = "form-control form-control-user" , @style = "color: black;" } })
+                @Html.EditorFor(model => model.Prioridad, new { htmlAttributes = new { @id = "txt_HU_Prioridad", @class = "form-control form-control-user" , @style = "color: black;" } })
             </div>
         </div>
 
@@ -33,7 +33,7 @@
             <div class="col-sm-8 mb-3 mb-sm-3">
                 <h6 style="color: black;">Descripcion</h6>
                 @*<textarea Id="Backlog_txt_Descripcion_HU" class="form-control form-control-user" placeholder="Escribe aquí ..."></textarea>*@
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @Id="Backlog_int_Prioridad", @class= "form-control form-control-user" , @style = "color: black;" } })
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @id = "txt_HU_Descripcion", @class= "form-control form-control-user" , @style = "color: black;" } })
             </div>
         </div>
 
@@ -42,15 +42,15 @@
             <div class="col-sm-5 mb-3 mb-sm-3">
                 @*@Html.EditorFor(model => model.Cargo_Id, new { htmlAttributes = new { @class = "form-control form-control-user" } })*@
                 <h6 style="color: black;">Fecha Estimada</h6>
-                @Html.EditorFor(model => model.FechaEstimada, new { htmlAttributes = new { @Id = "Backlog_txt_Titulo", @class = "form-control", @type = "date"  , @style = "color: black;" } })
+                @Html.EditorFor(model => model.FechaEstimada, new { htmlAttributes = new { @id = "txt_HU_FEcha Estimada", @class = "form-control", @type = "date"  , @style = "color: black;" } })
             </div>
             <div class="col-sm-3">
                 <h6 style="color: black;">Sprint</h6>
-                @Html.EditorFor(model => model.Sprint, new { htmlAttributes = new { @Id = "Backlog_int_Sprint", @class = "form-control form-control-user" , @style = "color: black;" } })
+                @Html.EditorFor(model => model.Sprint, new { htmlAttributes = new { @id = "txt_HU_Sprint", @class = "form-control form-control-user" , @style = "color: black;" } })
             </div>
             <div class="col-sm-3">
                 <h6 style="color: black;">Estado Kanban</h6>
-                @Html.EditorFor(model => model.EstadoKanban, new { htmlAttributes = new { @Id = "Backlog_int_Sprint", @class = "form-control form-control-user" , @style = "color: black;" } })
+                @Html.EditorFor(model => model.EstadoKanban, new { htmlAttributes = new { @id = "txt_HU_EstadoKanban", @class = "form-control form-control-user" , @style = "color: black;" } })
             </div>
         </div>
 
@@ -61,9 +61,9 @@
 
         <div class="col-md-offset-2 col-md-10">
 
-            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Cancelar", "Index", null, new { @id = "btn_HU_Cancelar", @class = "btn btn-danger" })
             &nbsp; &nbsp;&nbsp;
-            <input type="submit" value="Guardar" class="btn btn-primary" />
+            <input id = "btn_HU_Guardar" type="submit" value="Guardar" class="btn btn-primary" />
         </div>
     </div>
 </div>

@@ -11,7 +11,7 @@
 <h3 style="color: black;"><strong>Proyectos</strong></h3>
 <br />
 <p>
-    @Html.ActionLink("Crear Proyecto", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Crear Proyecto", "Create", null, new { @class = "btn btn-primary" , @id = "btn_Proyect_Crear" })
 </p>
 
 <br />
@@ -43,7 +43,7 @@
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-500"></i>
                 &nbsp; &nbsp;&nbsp;
                 @Html.DisplayFor(modelItem => SI657_Entities.getInstance().Usuario.Find(SI657_Entities.getInstance().Equipo.Where(x => x.Proyecto_Id == item.Id).FirstOrDefault<Equipo>().Usuario_Id).Nombre)
-                @Html.ActionLink("Abrir Proyecto", "PassKanban", new { name = SI657_Entities.getInstance().Proyecto.Find(item.Id).Nombre }, new { @class = "btn btn-outline-primary", @style = "float: right;" })
+                @Html.ActionLink("Abrir Proyecto", "PassKanban", new { name = SI657_Entities.getInstance().Proyecto.Find(item.Id).Nombre }, new { @class = "btn btn-primary", @style = "float: right;" })
             </td>
         </tr>
     }

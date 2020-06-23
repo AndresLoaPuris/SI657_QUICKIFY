@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,12 @@ namespace QUICKIFYRepository.Proyect
 	public class ProyectRepository
 	{
 		public SI657_Entities db = SI657_Entities.getInstance();
+
+		public IEnumerable<Proyecto> getProyects(string email)
+		{
+			int id = db.Usuario.Where(s => s.Email == email).FirstOrDefault<Usuario>().Id;
+			return db.Database.SqlQuery<Proyecto>("SELECT p.Id , p.Nombre , p.isDelete FROM Equipo e JOIN Proyecto p ON e.Proyecto_Id = p.Id WHERE p.isDelete = 0 and e.Usuario_Id = @Id ", new SqlParameter("Id", id)).ToList();
+		}
 
 		public void addProyect(string nombre) {
 			Proyecto proyecto = new Proyecto();

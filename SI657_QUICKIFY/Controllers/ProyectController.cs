@@ -14,9 +14,9 @@ namespace SI657_QUICKIFY.Controllers
         private ProyectService proyectService = new ProyectService();
         public static string Static_Name { get; set; }
 
-        public ActionResult Index() {
-
-            return View(SI657_Entities.getInstance().Proyecto.ToList().Where(s => s.isDelete == 0));
+        public ActionResult Index()
+        {
+            return View(proyectService.getProyects(AuthController.Static_Email));
         }
 
         public ActionResult PassKanban(string name)

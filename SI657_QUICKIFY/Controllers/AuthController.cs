@@ -14,18 +14,18 @@ namespace SI657_QUICKIFY.Controllers
         private AuthService authService = new AuthService();
         public static string Static_Email { get; set; }
 
+
         public ActionResult Login()
         {
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Login(AuthUsuario authUsuario)
         {
-
-
-            if (authService.getAccess(authUsuario.Email, authUsuario.Password)) {
-
+            if (authService.getAccess(authUsuario.Email, authUsuario.Password))
+            {
                 Usuario usuario = authService.getUser(authUsuario.Email);
                 FormsAuthentication.SetAuthCookie(usuario.Nombre, false);
                 Static_Email = authUsuario.Email;
@@ -34,7 +34,6 @@ namespace SI657_QUICKIFY.Controllers
 
             ModelState.AddModelError("", "Email y/o Password Invalido");
             return View();
-            
         }
 
 
@@ -43,6 +42,7 @@ namespace SI657_QUICKIFY.Controllers
             ViewBag.Cargo_Id = new SelectList(SI657_Entities.getInstance().Cargo, "Id", "Nombre");
             return View();
         }
+
 
         [HttpPost]
         public ActionResult SignUp(Usuario usuario)

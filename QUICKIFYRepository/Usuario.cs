@@ -11,7 +11,8 @@ namespace QUICKIFYRepository
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,13 @@ namespace QUICKIFYRepository
         }
     
         public int Id { get; set; }
+        [Required]
         public string Nombre { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
+        [Required]
         public int Cargo_Id { get; set; }
         
         public string data { get { return SI657_Entities.getInstance().Cargo.Find(Cargo_Id).Nombre + " '    ' " +  Nombre  ; } }

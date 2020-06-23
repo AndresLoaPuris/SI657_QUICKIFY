@@ -1,4 +1,5 @@
 ﻿using QUICKIFYRepository;
+using QUICKIFYService.Board;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,12 @@ namespace SI657_QUICKIFY.Controllers
     [Authorize]
     public class BoardController : Controller
     {
-        private SI657_Entities db = new SI657_Entities();
-        // GET: Board
+
+        private BoardService boardService = new BoardService();
+
         public ActionResult Kanban()
         {
-            var list = db.HistoriaUsuario.ToList().Where(s => s.isDelete == 0 && s.Proyecto.Nombre == ProyectController.Static_Name);
-            return View(list);
+            return View(boardService.getUserStories(ProyectController.Static_Name));
         }
     }
 }

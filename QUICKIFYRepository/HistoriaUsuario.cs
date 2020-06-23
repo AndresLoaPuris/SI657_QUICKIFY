@@ -31,10 +31,13 @@ namespace QUICKIFYRepository
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime FechaEstimada { get; set; }
         [Required]
+        [Range(0, 20)]
         public int Prioridad { get; set; }
         [Required]
+        [Range(0, 100)]
         public int Sprint { get; set; }
         [Required]
+        [Range(1, 3)]
         public int EstadoKanban { get; set; }
         [Required]
         public int isDelete { get; set; }

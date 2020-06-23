@@ -11,12 +11,16 @@ namespace QUICKIFYRepository
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Equipo
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "Error: Debe ingresar Usuario")]
         public int Usuario_Id { get; set; }
+        [Required(ErrorMessage = "Error: Debe ingresar es Admin")]
         public int isAdmin { get; set; }
+        [Required(ErrorMessage = "Error: Debe ingresar Proyecto")]
         public int Proyecto_Id { get; set; }
     
         public virtual Proyecto Proyecto { get; set; }

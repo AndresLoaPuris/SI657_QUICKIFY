@@ -83,7 +83,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QUICKIFYContext.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Sprint\SprintRepository.cs" />
     <Compile Include="Tarea.cs">
       <DependentUpon>QUICKIFYContext.tt</DependentUpon>
     </Compile>
