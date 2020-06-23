@@ -29,7 +29,7 @@ namespace SI657_QUICKIFY.Controllers
                 Usuario usuario = authService.getUser(authUsuario.Email);
                 FormsAuthentication.SetAuthCookie(usuario.Nombre, false);
                 Static_Email = authUsuario.Email;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Proyect");
             }
 
             ModelState.AddModelError("", "Email y/o Password Invalido");

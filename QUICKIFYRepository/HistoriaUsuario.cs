@@ -11,7 +11,8 @@ namespace QUICKIFYRepository
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class HistoriaUsuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,13 +22,23 @@ namespace QUICKIFYRepository
         }
     
         public int Id { get; set; }
+        [Required]
         public string Titulo { get; set; }
+        [Required]
         public string Descripcion { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime FechaEstimada { get; set; }
+        [Required]
         public int Prioridad { get; set; }
+        [Required]
         public int Sprint { get; set; }
+        [Required]
         public int EstadoKanban { get; set; }
+        [Required]
         public int isDelete { get; set; }
+        [Required]
         public int Proyecto_Id { get; set; }
     
         public virtual Proyecto Proyecto { get; set; }

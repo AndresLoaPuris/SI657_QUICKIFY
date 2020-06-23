@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace SI657_QUICKIFY.Controllers
 {
+    [Authorize]
     public class ProyectController : Controller
     {
         private ProyectService proyectService = new ProyectService();
@@ -15,7 +16,7 @@ namespace SI657_QUICKIFY.Controllers
 
         public ActionResult Index() {
 
-            return View(SI657_Entities.getInstance().Equipo.ToList());
+            return View(SI657_Entities.getInstance().Proyecto.ToList().Where(s => s.isDelete == 0));
         }
 
         public ActionResult PassKanban(string name)

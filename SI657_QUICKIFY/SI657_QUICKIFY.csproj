@@ -1925,6 +1925,7 @@
     <Content Include="Resources\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Resources\vendor\jquery\jquery.min.map" />
     <Content Include="Resources\vendor\jquery\jquery.slim.min.map" />
+    <None Include="Properties\PublishProfiles\SI657QUICKIFY - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1954,11 +1955,17 @@
     <Content Include="Views\Proyect\Index.cshtml" />
     <Content Include="Views\Shared\_Welcome.cshtml" />
     <Content Include="Views\Board\Kanban.cshtml" />
+    <Content Include="Views\Backlog\Temporal.cshtml" />
+    <Content Include="Views\Backlog\Index.cshtml" />
+    <Content Include="Views\Backlog\Edit.cshtml" />
+    <Content Include="Views\Backlog\Create.cshtml" />
+    <Content Include="Views\Backlog\Index_Task.cshtml" />
+    <Content Include="Views\Backlog\Create_Task.cshtml" />
+    <Content Include="Views\Backlog\Edit_Task.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Backlog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

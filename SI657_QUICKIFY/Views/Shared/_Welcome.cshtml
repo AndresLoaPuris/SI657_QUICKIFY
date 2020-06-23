@@ -18,13 +18,26 @@
 
 <body id="wrapper">
 
+
+    <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index","Proyect")">
+            <div class="sidebar-brand-icon">
+                <i class="fas fa-share-alt"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">QUICKIFY</div>
+        </a>
+
+    </ul>
+
+
     <div id="content-wrapper" class="d-flex flex-column">
 
-        <div id="content">
+        <div style="background-color:white;" id="content">
 
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top">
 
-                
+
 
                 <ul class="navbar-nav ml-auto">
 
@@ -43,11 +56,11 @@
                                     <i class="fas fa-folder-open fa-sm fa-fw mr-2 text-gray-500"></i>
                                     Proyectos
                                 </a>
-                                <div class="dropdown-divider"></div>
+                                @*<div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href='@Url.Action("ProfileUser", "Auth")'>
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-500"></i>
                                     Perfil
-                                </a>
+                                </a>*@
 
                                 <div class="dropdown-divider"></div>
 
@@ -63,7 +76,7 @@
 
             </nav>
 
-            <div class="container-fluid">
+            <div style="background-color:white;" class="container-fluid">
                 @RenderBody()
             </div>
 

@@ -12,28 +12,28 @@ namespace QUICKIFYRepository
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class SI657_Entities : DbContext
     {
         private static SI657_Entities instance = null;
 
-        private SI657_Entities()
+        public SI657_Entities()
             : base("name=SI657_Entities")
         {
         }
 
-        public static SI657_Entities getInstance() {
-            if (instance == null) {
+        public static SI657_Entities getInstance()
+        {
+            if (instance == null)
+            {
                 instance = new SI657_Entities();
             }
             return instance;
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
         public virtual DbSet<Cargo> Cargo { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Equipo> Equipo { get; set; }
