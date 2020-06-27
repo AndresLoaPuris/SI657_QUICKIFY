@@ -1,0 +1,147 @@
+﻿@model QUICKIFYRepository.Proyects
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Welcome.cshtml";
+}
+
+<div>
+    <div>
+        <div>
+
+            <form id="NewOrderForm">
+                <div>
+                    @*Customer Details*@
+                    <h4 style="color:black;"><strong>Proyecto</strong></h4>
+                    <br />
+                    <div class="form-horizontal">
+
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                @*@Html.EditorFor(model => model.Cargo_Id, new { htmlAttributes = new { @class = "form-control form-control-user" } })*@
+                                <h6 style="color:black;">Nombre del Proyecto</h6>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Id = "Proyecto_txt_Nombre", @class = "form-control", @style = "color:black;" } })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br />
+
+                    @*Order Details*@
+                    <h4 style="color:black;"><strong>Equipo</strong></h4>
+                    <br />
+                    <div class="form-horizontal">
+                        <div class="form-group row">
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                @Html.DropDownList("Usuario_Id", null, new { @Id = "Proyecto_ddl_Desarrollador", @class = "form-control form-control-user", @style = "color:black;" })
+                            </div>
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                @Html.DropDownList("Role_Id", null, new { @Id = "Proyecto_ddl_Role", @class = "form-control form-control-user", @style = "color:black;" })
+                            </div>
+                            &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                            <button id="addToList" style="float: right;" class="btn btn-primary">Agregar a la Lista</button>
+                        </div>
+
+                        <br />
+                        <table id="Alquiler_tabl_Deatalles" class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width:30%; color:black;">Equipo</th>
+                                    <th style="width:20%"></th>
+                                    <th style="width:20%"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <br />
+                    </div>
+                </div>
+                <div>
+                    @Html.ActionLink("Cancelar", "Index", null, new { @id = "Alquiler_btn_Cancelar", @class = "btn btn-danger" })
+                    &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                    <button id="Alquiler_btn_Guardar" type="submit" class="btn btn-primary">Guardar Datos</button>
+                </div>
+                <br />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+
+    <script>
+
+        //Add Multiple Order.
+        $("#addToList").click(function (e) {
+
+            e.preventDefault();
+
+            if ($.trim($("#Proyecto_ddl_Desarrollador").val()) == "" && $.trim($("#Proyecto_ddl_Role").val()) == "" ) return;
+
+            var productName = $("#Proyecto_ddl_Desarrollador").val();
+            var roleName = $("#Proyecto_ddl_Role").val(),
+                detailsTableBody = $("#Alquiler_tabl_Deatalles tbody");
+            var productItem = '<tr><td style = "color:black;">' + productName + '</td><td style = "color:black;">' + roleName + '</td><td><a data-itemId="0" href="#" class="deleteItem">Retirar</a></td></tr>';
+            detailsTableBody.append(productItem);
+            clearItem();
+        });
+        //After Add A New Order In The List, Clear Clean The Form For Add More Order.
+        function clearItem() {
+            $("#Proyecto_ddl_Desarrollador").val();
+        }
+        // After Add A New Order In The List, If You Want, You Can Remove It.
+        $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+        //After Click Save Button Pass All Data View To Controller For Save Database
+        function saveOrder(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Proyect/SaveEquipo",
+                data: data,
+                success: function (result) {
+                    location.href = "/Proyect/Index";
+                },
+                error: function () {
+                    alert("Error!")
+                }
+            });
+        }
+        //Collect Multiple Order List For Pass To Controller
+        $("#Alquiler_btn_Guardar").click(function (e) {
+            e.preventDefault();
+
+            var orderArr = [];
+            orderArr.length = 0;
+
+            $.each($("#Alquiler_tabl_Deatalles tbody tr"), function () {
+                orderArr.push({
+                    Name: $(this).find('td:eq(0)').html(),
+                    Password: $(this).find('td:eq(1)').html()
+                });
+            });
+
+
+            var data = JSON.stringify({
+                nameProyect: $("#Proyecto_txt_Nombre").val(),
+                users: orderArr
+            });
+            saveOrder(data)
+        });
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

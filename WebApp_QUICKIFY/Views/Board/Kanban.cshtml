@@ -1,0 +1,132 @@
+﻿@model IEnumerable<QUICKIFYRepository.UserStories>
+
+@{
+    ViewBag.Title = "Kanban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h4><strong>Tablero Kanban</strong></h4>
+    <h5><strong>@DateTime.Now.ToString("dddd, dd MMMM yyyy")</strong></h5>
+</div>
+<!-- Content Row -->
+<!-- Content Row -->
+
+<div class="row">
+
+    <!-- Pie Chart -->
+    <div class="col-xl-4 col-lg-5">
+        <div  class="card mb-4">
+            <!-- Card Header - Dropdown -->
+            <div style="background-color: #e4e7ec" class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"><strong>POR HACER</strong></h6>
+            </div>
+
+            <!-- Card Body -->
+            <div style="background-color: #e4e7ec" class="card-body">
+
+                @foreach (var item in Model)
+                {
+
+                    if (item.StateKanban == "POR HACER" && item.isDelete == 0)
+                    {
+                        <!-- AQUI TARJETAS -->
+                        <div class="card shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="h5 mb-1 font-weight-bold text-gray-800">@item.Title</div>
+                                        <div class="text-xs font-weight-bold text text-uppercase mb-1">@item.Users.Name </div>
+                                        <div class="text-xs font-weight-bold text text-uppercase mb-1"> @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isCompleted == 1 && s.isDelete == 0).Count() / @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isDelete == 0).Count() Tareas Realizadas</div>
+
+                                    </div>
+                                    @*<a href="@Url.Action("Delete","Backlog",new { id = item.Id })" title="Eliminar Historia de Usuario" class="btn-sm btn-circle btn btn-primary"><i class="fas fa-eye"></i></a>*@
+
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-5">
+        <div class="card mb-4">
+            <!-- Card Header - Dropdown -->
+            <div style="background-color: #e4e7ec" class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"><strong>EN CURSO</strong></h6>
+            </div>
+            <!-- Card Body -->
+            <div style="background-color: #e4e7ec" class="card-body">
+
+
+                @foreach (var item in Model)
+                {
+
+                    if (item.StateKanban == "EN CURSO" && item.isDelete == 0)
+                    {
+                        <!-- AQUI TARJETAS -->
+                        <div class="card shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="h5 mb-1 font-weight-bold text-gray-800">@item.Title</div>
+                                        <div class="text-xs font-weight-bold text text-uppercase mb-1">@item.Users.Name </div>
+                                        <div class="text-xs font-weight-bold text text-uppercase mb-1"> @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isCompleted == 1 && s.isDelete == 0).Count() / @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isDelete == 0).Count() Tareas Realizadas</div>
+
+                                    </div>
+                                    @*<a href="@Url.Action("Delete","Backlog",new { id = item.Id })" title="Eliminar Historia de Usuario" class="btn-sm btn-circle btn btn-primary"><i class="fas fa-eye"></i></a>*@
+
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-5">
+        <div class="card mb-4">
+            <!-- Card Header - Dropdown -->
+            <div style="background-color: #e4e7ec" class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"><strong>TERMINADO</strong></h6>
+            </div>
+            <!-- Card Body -->
+            <div style="background-color: #e4e7ec" class="card-body">
+                @foreach (var item in Model)
+                {
+
+                    if (item.StateKanban == "TERMINADO" && item.isDelete == 0)
+                    {
+                        <!-- AQUI TARJETAS -->
+                        <div class="card shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="h5 mb-1 font-weight-bold text-gray-800">@item.Title</div>
+                                        <div class="text-xs font-weight-bold text text-uppercase mb-1">@item.Users.Name </div>
+                                        <div class="text-xs font-weight-bold text text-uppercase mb-1"> @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isCompleted == 1 && s.isDelete == 0).Count() / @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isDelete == 0).Count() Tareas Realizadas</div>
+
+                                    </div>
+                                    @*<a href="@Url.Action("Delete","Backlog",new { id = item.Id })" title="Eliminar Historia de Usuario" class="btn-sm btn-circle btn btn-primary"><i class="fas fa-eye"></i></a>*@
+
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

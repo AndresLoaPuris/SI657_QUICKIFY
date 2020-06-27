@@ -1,0 +1,67 @@
+﻿@model QUICKIFYRepository.Tasks
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tasks</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isDelete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isDelete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isCompleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isCompleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IntendedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IntendedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserStories.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserStories.Title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

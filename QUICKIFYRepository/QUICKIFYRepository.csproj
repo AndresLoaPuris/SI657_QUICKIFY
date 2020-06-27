@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C91C651C-68F9-4A01-9EA1-C6A8D42A26CC}</ProjectGuid>
+    <ProjectGuid>{8A18D420-4C25-452D-AB9A-9B1FA8B02A24}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QUICKIFYRepository</RootNamespace>
@@ -50,74 +50,74 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthUsuario.cs" />
-    <Compile Include="Auth\AuthRepository.cs" />
-    <Compile Include="Backlog\BacklogRepository.cs" />
-    <Compile Include="Board\BoardRepository.cs" />
-    <Compile Include="Cargo.cs">
-      <DependentUpon>QUICKIFYContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Equipo.cs">
-      <DependentUpon>QUICKIFYContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HistoriaUsuario.cs">
-      <DependentUpon>QUICKIFYContext.tt</DependentUpon>
+    <Compile Include="AuthUser.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DefStateKanban.cs" />
+    <Compile Include="IntendedTimes.cs">
+      <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proyecto.cs">
-      <DependentUpon>QUICKIFYContext.tt</DependentUpon>
+    <Compile Include="Proyects.cs">
+      <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
-    <Compile Include="Proyect\ProyectRepository.cs" />
-    <Compile Include="QUICKIFYContext.Context.cs">
+    <Compile Include="Role.cs">
+      <DependentUpon>SI657.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SI657.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QUICKIFYContext.Context.tt</DependentUpon>
+      <DependentUpon>SI657.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="QUICKIFYContext.cs">
+    <Compile Include="SI657.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QUICKIFYContext.tt</DependentUpon>
+      <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
-    <Compile Include="QUICKIFYContext.Designer.cs">
+    <Compile Include="SI657.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QUICKIFYContext.edmx</DependentUpon>
+      <DependentUpon>SI657.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Tarea.cs">
-      <DependentUpon>QUICKIFYContext.tt</DependentUpon>
+    <Compile Include="Tasks.cs">
+      <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
-    <Compile Include="Usuario.cs">
-      <DependentUpon>QUICKIFYContext.tt</DependentUpon>
+    <Compile Include="Team.cs">
+      <DependentUpon>SI657.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>SI657.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserStories.cs">
+      <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="QUICKIFYContext.edmx">
+    <EntityDeploy Include="SI657.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QUICKIFYContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>SI657.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <None Include="QUICKIFYContext.edmx.diagram">
-      <DependentUpon>QUICKIFYContext.edmx</DependentUpon>
+    <None Include="SI657.edmx.diagram">
+      <DependentUpon>SI657.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="QUICKIFYContext.Context.tt">
+    <Content Include="SI657.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QUICKIFYContext.Context.cs</LastGenOutput>
-      <DependentUpon>QUICKIFYContext.edmx</DependentUpon>
+      <LastGenOutput>SI657.Context.cs</LastGenOutput>
+      <DependentUpon>SI657.edmx</DependentUpon>
     </Content>
-    <Content Include="QUICKIFYContext.tt">
+    <Content Include="SI657.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QUICKIFYContext.edmx</DependentUpon>
-      <LastGenOutput>QUICKIFYContext.cs</LastGenOutput>
+      <DependentUpon>SI657.edmx</DependentUpon>
+      <LastGenOutput>SI657.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

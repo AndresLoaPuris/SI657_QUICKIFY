@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd547cb9cb2349d8a26d966aaa38ee0c" Name="Diagram1">
+        <EntityTypeShape EntityType="SI657Model.IntendedTimes" Width="1.5" PointX="10.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI657Model.Proyects" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI657Model.Role" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI657Model.Tasks" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI657Model.Team" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI657Model.Users" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI657Model.UserStories" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="SI657Model.IntendedTimes_Tasks" ManuallyRouted="false" />
+        <AssociationConnector Association="SI657Model.Equipo_Proyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="SI657Model.HistoriaUsuario_Proyects" ManuallyRouted="false" />
+        <AssociationConnector Association="SI657Model.Team_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="SI657Model.Tarea_HistoriaUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SI657Model.Equipo_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SI657Model.HistoriaUsuario_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

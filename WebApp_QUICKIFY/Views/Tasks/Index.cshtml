@@ -1,0 +1,83 @@
+﻿@model IEnumerable<QUICKIFYRepository.UserStories>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int allTask = 0;
+    foreach (var item in Model){
+        allTask += item.Tasks.Where(s => s.isCompleted == 0 && s.isDelete == 0).Count();
+    }
+}
+
+<h4><strong>Tareas</strong></h4>
+@if (allTask == 1)
+{
+    <h6><strong>@allTask Tarea Pendiente</strong></h6>
+}
+else
+{
+    <h6><strong>@allTask Tareas Pendiente</strong></h6>
+}
+<br />
+
+@foreach (var item in Model)
+{
+
+    <h5><strong>Historia de Usuario</strong></h5>
+    <h6> @item.Title</h6>
+    <table style="color: black;" class="table">
+
+        <thead class="thead-light">
+
+            <tr>
+                <th scope="col">
+                    @Html.DisplayName("Titulo")
+                </th>
+                <th scope="col">
+                    @Html.DisplayName("Descripcion")
+                </th>
+                <th scope="col">
+                    @Html.DisplayName("Fecha prevista")
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in item.Tasks)
+            {
+                if (task.isDelete == 0)
+                {
+                    <tr>
+                        <th scope="row">
+                            @Html.DisplayFor(modelItem => task.Title)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => task.Description)
+                        </td>
+                        <td>
+                            @task.IntendedDate.ToString("dddd, dd MMMM yyyy")
+                        </td>
+                        <td>
+
+                            @if (task.isCompleted == 0)
+                            {
+                                @Html.ActionLink("Finalizar", "FinalizarTask", new { id = task.Id, UserStory_id = item.Id }, new { @class = "btn btn-danger" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Restaurar", "RestaurarTask", new { id = task.Id, UserStory_id = item.Id }, new { @class = "btn btn-primary" })
+                            }
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+    <br />
+    <br />
+}
+
+
+
+

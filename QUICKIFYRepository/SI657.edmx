@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SI657Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="IntendedTimes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="Finish" Type="datetime" Nullable="false" />
+          <Property Name="Task_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proyects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="isDelete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="isDelete" Type="int" Nullable="false" />
+          <Property Name="UserStory_Id" Type="int" Nullable="false" />
+          <Property Name="isCompleted" Type="int" Nullable="false" />
+          <Property Name="IntendedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Proyect_Id" Type="int" Nullable="false" />
+          <Property Name="Role_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserStories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="StateKanban" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="isDelete" Type="int" Nullable="false" />
+          <Property Name="Sprint" Type="int" Nullable="false" />
+          <Property Name="Proyect_Id" Type="int" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Equipo_Proyecto">
+          <End Role="Proyects" Type="Self.Proyects" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="Proyect_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Equipo_Usuario">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HistoriaUsuario_Proyects">
+          <End Role="Proyects" Type="Self.Proyects" Multiplicity="1" />
+          <End Role="UserStories" Type="Self.UserStories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStories">
+              <PropertyRef Name="Proyect_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HistoriaUsuario_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserStories" Type="Self.UserStories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStories">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IntendedTimes_Tasks">
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
+          <End Role="IntendedTimes" Type="Self.IntendedTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IntendedTimes">
+              <PropertyRef Name="Task_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tarea_HistoriaUsuario">
+          <End Role="UserStories" Type="Self.UserStories" Multiplicity="1" />
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tasks">
+              <PropertyRef Name="UserStory_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Team_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SI657ModelStoreContainer">
+          <EntitySet Name="IntendedTimes" EntityType="Self.IntendedTimes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proyects" EntityType="Self.Proyects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStories" EntityType="Self.UserStories" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Equipo_Proyecto" Association="Self.Equipo_Proyecto">
+            <End Role="Proyects" EntitySet="Proyects" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="Equipo_Usuario" Association="Self.Equipo_Usuario">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="HistoriaUsuario_Proyects" Association="Self.HistoriaUsuario_Proyects">
+            <End Role="Proyects" EntitySet="Proyects" />
+            <End Role="UserStories" EntitySet="UserStories" />
+          </AssociationSet>
+          <AssociationSet Name="HistoriaUsuario_Users" Association="Self.HistoriaUsuario_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserStories" EntitySet="UserStories" />
+          </AssociationSet>
+          <AssociationSet Name="IntendedTimes_Tasks" Association="Self.IntendedTimes_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="IntendedTimes" EntitySet="IntendedTimes" />
+          </AssociationSet>
+          <AssociationSet Name="Tarea_HistoriaUsuario" Association="Self.Tarea_HistoriaUsuario">
+            <End Role="UserStories" EntitySet="UserStories" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="Team_Role" Association="Self.Team_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SI657Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="IntendedTimes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Finish" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Task_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tasks" Relationship="Self.IntendedTimes_Tasks" FromRole="IntendedTimes" ToRole="Tasks" />
+        </EntityType>
+        <EntityType Name="Proyects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isDelete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Team" Relationship="Self.Equipo_Proyecto" FromRole="Proyects" ToRole="Team" />
+          <NavigationProperty Name="UserStories" Relationship="Self.HistoriaUsuario_Proyects" FromRole="Proyects" ToRole="UserStories" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Team" Relationship="Self.Team_Role" FromRole="Role" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isDelete" Type="Int32" Nullable="false" />
+          <Property Name="UserStory_Id" Type="Int32" Nullable="false" />
+          <Property Name="isCompleted" Type="Int32" Nullable="false" />
+          <Property Name="IntendedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="IntendedTimes" Relationship="Self.IntendedTimes_Tasks" FromRole="Tasks" ToRole="IntendedTimes" />
+          <NavigationProperty Name="UserStories" Relationship="Self.Tarea_HistoriaUsuario" FromRole="Tasks" ToRole="UserStories" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Proyect_Id" Type="Int32" Nullable="false" />
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Proyects" Relationship="Self.Equipo_Proyecto" FromRole="Team" ToRole="Proyects" />
+          <NavigationProperty Name="Role" Relationship="Self.Team_Role" FromRole="Team" ToRole="Role" />
+          <NavigationProperty Name="Users" Relationship="Self.Equipo_Usuario" FromRole="Team" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Team" Relationship="Self.Equipo_Usuario" FromRole="Users" ToRole="Team" />
+          <NavigationProperty Name="UserStories" Relationship="Self.HistoriaUsuario_Users" FromRole="Users" ToRole="UserStories" />
+        </EntityType>
+        <EntityType Name="UserStories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <Property Name="StateKanban" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isDelete" Type="Int32" Nullable="false" />
+          <Property Name="Sprint" Type="Int32" Nullable="false" />
+          <Property Name="Proyect_Id" Type="Int32" Nullable="false" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Proyects" Relationship="Self.HistoriaUsuario_Proyects" FromRole="UserStories" ToRole="Proyects" />
+          <NavigationProperty Name="Tasks" Relationship="Self.Tarea_HistoriaUsuario" FromRole="UserStories" ToRole="Tasks" />
+          <NavigationProperty Name="Users" Relationship="Self.HistoriaUsuario_Users" FromRole="UserStories" ToRole="Users" />
+        </EntityType>
+        <Association Name="IntendedTimes_Tasks">
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
+          <End Role="IntendedTimes" Type="Self.IntendedTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IntendedTimes">
+              <PropertyRef Name="Task_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Equipo_Proyecto">
+          <End Role="Proyects" Type="Self.Proyects" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="Proyect_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HistoriaUsuario_Proyects">
+          <End Role="Proyects" Type="Self.Proyects" Multiplicity="1" />
+          <End Role="UserStories" Type="Self.UserStories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStories">
+              <PropertyRef Name="Proyect_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Team_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tarea_HistoriaUsuario">
+          <End Role="UserStories" Type="Self.UserStories" Multiplicity="1" />
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tasks">
+              <PropertyRef Name="UserStory_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Equipo_Usuario">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HistoriaUsuario_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserStories" Type="Self.UserStories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStories">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SI657_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IntendedTimes" EntityType="Self.IntendedTimes" />
+          <EntitySet Name="Proyects" EntityType="Self.Proyects" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Tasks" EntityType="Self.Tasks" />
+          <EntitySet Name="Team" EntityType="Self.Team" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UserStories" EntityType="Self.UserStories" />
+          <AssociationSet Name="IntendedTimes_Tasks" Association="Self.IntendedTimes_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="IntendedTimes" EntitySet="IntendedTimes" />
+          </AssociationSet>
+          <AssociationSet Name="Equipo_Proyecto" Association="Self.Equipo_Proyecto">
+            <End Role="Proyects" EntitySet="Proyects" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="HistoriaUsuario_Proyects" Association="Self.HistoriaUsuario_Proyects">
+            <End Role="Proyects" EntitySet="Proyects" />
+            <End Role="UserStories" EntitySet="UserStories" />
+          </AssociationSet>
+          <AssociationSet Name="Team_Role" Association="Self.Team_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="Tarea_HistoriaUsuario" Association="Self.Tarea_HistoriaUsuario">
+            <End Role="UserStories" EntitySet="UserStories" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="Equipo_Usuario" Association="Self.Equipo_Usuario">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="HistoriaUsuario_Users" Association="Self.HistoriaUsuario_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserStories" EntitySet="UserStories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SI657ModelStoreContainer" CdmEntityContainer="SI657_Entities">
+          <EntitySetMapping Name="IntendedTimes">
+            <EntityTypeMapping TypeName="SI657Model.IntendedTimes">
+              <MappingFragment StoreEntitySet="IntendedTimes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Finish" ColumnName="Finish" />
+                <ScalarProperty Name="Task_Id" ColumnName="Task_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proyects">
+            <EntityTypeMapping TypeName="SI657Model.Proyects">
+              <MappingFragment StoreEntitySet="Proyects">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="SI657Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="SI657Model.Tasks">
+              <MappingFragment StoreEntitySet="Tasks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="UserStory_Id" ColumnName="UserStory_Id" />
+                <ScalarProperty Name="isCompleted" ColumnName="isCompleted" />
+                <ScalarProperty Name="IntendedDate" ColumnName="IntendedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Team">
+            <EntityTypeMapping TypeName="SI657Model.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Proyect_Id" ColumnName="Proyect_Id" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SI657Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStories">
+            <EntityTypeMapping TypeName="SI657Model.UserStories">
+              <MappingFragment StoreEntitySet="UserStories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="StateKanban" ColumnName="StateKanban" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="Sprint" ColumnName="Sprint" />
+                <ScalarProperty Name="Proyect_Id" ColumnName="Proyect_Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

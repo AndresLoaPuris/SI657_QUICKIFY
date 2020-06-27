@@ -1,0 +1,57 @@
+﻿@model IEnumerable<QUICKIFYRepository.Tasks>
+
+@using WebApp_QUICKIFY.Controllers
+
+@{
+    ViewBag.Title = "Tasks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<h5>Historia de Usuario</h5>
+<h4><strong>@ViewBag.NameHU</strong></h4>
+<br />
+<p>
+    @Html.ActionLink("Agregar Tarea", "Create", null, new { @id = "btn_Task_Crear", @class = "btn btn-primary" })
+</p>
+<br />
+<table style="color: black;" class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IntendedDate)
+        </th>
+        <th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+
+    <td>
+        <a href="@Url.Action("Edit",new { id = item.Id })" title="Editar Tarea" class="btn btn-circle btn-sm btn-primary"><i class="fas fa-pen"></i></a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="@Url.Action("Delete",new { id = item.Id })" title="Eliminar Tarea" class="btn btn-circle btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @item.IntendedDate.ToString("dddd, dd MMMM yyyy")
+    </td>
+
+</tr>
+}
+
+</table>
