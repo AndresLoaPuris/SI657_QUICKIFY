@@ -3,7 +3,7 @@
 @using WebApp_QUICKIFY.Controllers
 
 @{
-    ViewBag.Title = "Tasks";
+    ViewBag.Title = "Tareas segun Historia de Usuario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 
@@ -13,7 +13,7 @@
 <h4><strong>@ViewBag.NameHU</strong></h4>
 <br />
 <p>
-    @Html.ActionLink("Agregar Tarea", "Create", null, new { @id = "btn_Task_Crear", @class = "btn btn-primary" })
+    @Html.ActionLink("Agregar Tarea", "Create", null, new { @id = "btn_Tasks_Crear", @class = "btn btn-primary" })
 </p>
 <br />
 <table style="color: black;" class="table">

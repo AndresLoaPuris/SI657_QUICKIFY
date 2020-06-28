@@ -5,24 +5,24 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SI657 - QUICKIFY</title>
-        <link href="/Resources/vendor/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-        <link href="/Resources/css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="/Resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="/Resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link href="/Resources/vendor/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/Resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/Resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/Resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    @Scripts.Render("~/bundles/modernizr")
+</head>
 
     <body id="wrapper">
 
         <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Kanban","Board")">
+            <a id="btn_Welcome_Proyect" class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Kanban","Board")">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-share-alt"></i>
                 </div>
@@ -96,7 +96,7 @@
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
 
-                                    <a id="btn_Proyect"  class="dropdown-item" href='@Url.Action("Index", "Proyect")'>
+                                    <a id="btn_Proyects"  class="dropdown-item" href='@Url.Action("Index", "Proyect")'>
                                         <i class="fas fa-folder-open fa-sm fa-fw mr-2 text-gray-500"></i>
                                         Proyectos
                                     </a>

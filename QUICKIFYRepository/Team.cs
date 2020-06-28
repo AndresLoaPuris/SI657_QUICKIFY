@@ -11,12 +11,16 @@ namespace QUICKIFYRepository
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Team
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Team
     {
         public int Id { get; set; }
+        
         public int User_Id { get; set; }
+        
         public int Proyect_Id { get; set; }
+        
         public int Role_Id { get; set; }
     
         public virtual Proyects Proyects { get; set; }

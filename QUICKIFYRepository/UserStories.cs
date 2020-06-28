@@ -11,8 +11,9 @@ namespace QUICKIFYRepository
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class UserStories
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class UserStories
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserStories()
@@ -21,13 +22,21 @@ namespace QUICKIFYRepository
         }
     
         public int Id { get; set; }
+        
         public string Title { get; set; }
+        
         public string Description { get; set; }
+        
         public int Priority { get; set; }
+        
         public string StateKanban { get; set; }
+        
         public int isDelete { get; set; }
+        
         public int Sprint { get; set; }
+       
         public int Proyect_Id { get; set; }
+        
         public int User_Id { get; set; }
     
         public virtual Proyects Proyects { get; set; }

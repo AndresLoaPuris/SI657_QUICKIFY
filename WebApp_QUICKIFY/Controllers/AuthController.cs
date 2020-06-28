@@ -8,12 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using QUICKIFYRepository;
+using QUICKIFYService.Auth;
 
 namespace WebApp_QUICKIFY.Controllers
 {
     public class AuthController : Controller
     {
-        private SI657_Entities db = new SI657_Entities();
+        private AuthService authService = new AuthService();
         public static string Static_Email { get; set; }
 
         public ActionResult Login()
@@ -25,10 +26,10 @@ namespace WebApp_QUICKIFY.Controllers
         [HttpPost]
         public ActionResult Login(AuthUser authUser)
         {
-            if (db.Users.Any(x => x.Email == authUser.Email && x.Password == authUser.Password))
+            if (authService.getAccess(authUser))
             {
-                Users users = db.Users.Where(s => s.Email == authUser.Email).FirstOrDefault<Users>();
-                FormsAuthentication.SetAuthCookie(users.Name, false);
+                
+                FormsAuthentication.SetAuthCookie(authService.getNameUser(authUser), false);
                 Static_Email = authUser.Email;
                 return RedirectToAction("Index", "Proyect");
             }
@@ -46,13 +47,15 @@ namespace WebApp_QUICKIFY.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SignUp(Users users)
         {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(users);
-                db.SaveChanges();
-                return RedirectToAction("Login");
+            if (!authService.getUserExists(users)) {
+                if (ModelState.IsValid)
+                {
+                    authService.signUp(users);
+                    return RedirectToAction("Login");
+                }
             }
 
+            ModelState.AddModelError("", "Usuario y/o Email Existente");
             return View(users);
         }
 
@@ -66,7 +69,7 @@ namespace WebApp_QUICKIFY.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                authService.getDispose();
             }
             base.Dispose(disposing);
         }

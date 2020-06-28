@@ -11,8 +11,9 @@ namespace QUICKIFYRepository
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Role
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
@@ -21,6 +22,7 @@ namespace QUICKIFYRepository
         }
     
         public int Id { get; set; }
+        
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

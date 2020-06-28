@@ -1,7 +1,7 @@
 ﻿@model QUICKIFYRepository.Tasks
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear Tarea";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,12 +17,12 @@
     <div class="form-group row">
         <div class="col-sm-5 mb-3 mb-sm-3">
             <h6 style="color: black;">Titulo</h6>
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" , @style = "color: black;" } })
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @id="txt_Tasks_Title", @class = "form-control" , @style = "color: black;" } })
             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         </div>
         <div class="col-sm-3">
             <h6 style="color: black;">Fecha Prevista</h6>
-            @Html.EditorFor(model => model.IntendedDate, new { htmlAttributes = new { @class = "form-control", @type = "datetime-local" , @style = "color: black;" } })
+            @Html.EditorFor(model => model.IntendedDate, new { htmlAttributes = new { @id = "txt_Tasks_IntendedDate", @class = "form-control", @type = "datetime-local" , @style = "color: black;" } })
             @Html.ValidationMessageFor(model => model.IntendedDate, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -30,7 +30,7 @@
     <div class="form-group row">
         <div class="col-sm-8 mb-3 mb-sm-3">
             <h6 style="color: black;">Descripcion</h6>
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" , @style = "color: black;" } })
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @id = "txt_Tasks_Description", @class = "form-control" , @style = "color: black;" } })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
 
@@ -41,9 +41,9 @@
 
         <div class="col-md-offset-2 col-md-10">
 
-            @Html.ActionLink("Cancelar", "Tasks", new { id = WebApp_QUICKIFY.Controllers.TasksController.Static_HU }, new { @class = "btn btn-danger", @id = "btn_HU_Cancelar" })
+            @Html.ActionLink("Cancelar", "Tasks", new { id = WebApp_QUICKIFY.Controllers.TasksController.Static_HU }, new { @class = "btn btn-danger", @id = "btn_Tasks_Cancelar" })
             &nbsp; &nbsp;&nbsp;
-            <input id="btn_HU_Guardar" type="submit" value="Guardar" class="btn btn-primary" />
+            <input id="btn_Tasks_Guardar" type="submit" value="Guardar" class="btn btn-primary" />
         </div>
     </div>
 

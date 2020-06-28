@@ -22,11 +22,17 @@ namespace QUICKIFYRepository
         }
     
         public int Id { get; set; }
+        
         public string Title { get; set; }
+        
         public string Description { get; set; }
+        
         public int isDelete { get; set; }
+        
         public int UserStory_Id { get; set; }
+        
         public int isCompleted { get; set; }
+        
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime IntendedDate { get; set; }

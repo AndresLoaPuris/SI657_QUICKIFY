@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<QUICKIFYRepository.UserStories>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tareas";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int allTask = 0;
     foreach (var item in Model){
@@ -61,11 +61,11 @@ else
 
                             @if (task.isCompleted == 0)
                             {
-                                @Html.ActionLink("Finalizar", "FinalizarTask", new { id = task.Id, UserStory_id = item.Id }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("Finalizar", "FinalizarTask", new { id = task.Id, UserStory_id = item.Id }, new { @id = "btn_Tasks_Finalizar", @class = "btn btn-danger" })
                             }
                             else
                             {
-                                @Html.ActionLink("Restaurar", "RestaurarTask", new { id = task.Id, UserStory_id = item.Id }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Restaurar", "RestaurarTask", new { id = task.Id, UserStory_id = item.Id }, new { @id = "btn_Tasks_Restaurar", @class = "btn btn-primary" })
                             }
                         </td>
                     </tr>

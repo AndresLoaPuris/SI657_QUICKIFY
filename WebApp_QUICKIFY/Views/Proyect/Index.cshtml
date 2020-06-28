@@ -50,7 +50,7 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-500"></i>
                     &nbsp; &nbsp;&nbsp;
                     @Html.DisplayFor(modelItem => db.Proyects.Find(item.Id).Team.Where(s => s.Users.Email == AuthController.Static_Email).FirstOrDefault().Role.Name)
-                    @Html.ActionLink("Abrir Proyecto", "PassKanban", new { name = db.Proyects.Find(item.Id).Name }, new { @class = "btn btn-primary", @style = "float: right;" })
+                    @Html.ActionLink("Abrir Proyecto", "PassKanban", new { name = db.Proyects.Find(item.Id).Name }, new { id = "btn_Proyect_Open" , @class = "btn btn-primary", @style = "float: right;" })
                 </td>
             </tr>
         }

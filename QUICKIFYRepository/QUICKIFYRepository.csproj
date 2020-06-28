@@ -51,8 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthUser.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="DefStateKanban.cs" />
+    <Compile Include="Auth\AuthRepository.cs" />
+    <Compile Include="Backlog\BacklogRepository.cs" />
+    <Compile Include="Board\BoardRepository.cs" />
     <Compile Include="IntendedTimes.cs">
       <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
@@ -60,6 +61,7 @@
     <Compile Include="Proyects.cs">
       <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
+    <Compile Include="Proyect\ProyectRepository.cs" />
     <Compile Include="Role.cs">
       <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
@@ -81,6 +83,7 @@
     <Compile Include="Tasks.cs">
       <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
+    <Compile Include="Task\TasksRepository.cs" />
     <Compile Include="Team.cs">
       <DependentUpon>SI657.tt</DependentUpon>
     </Compile>
@@ -119,5 +122,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
