@@ -14,12 +14,28 @@ namespace QUICKIFYService.Backlog
 
 		public IEnumerable<UserStories> getUserStoriesByProjectName(string nameProyect)
 		{
-			return backlogRepository.getUserStoriesByProjectName(nameProyect);
+			if (nameProyect != string.Empty)
+			{
+				return backlogRepository.getUserStoriesByProjectName(nameProyect);
+			}
+			else
+			{
+				Console.WriteLine("Error: El campo Name del Proyecto no puede ser vacio");
+				return null;
+			}
 		}
 
 		public int getIdByProjectName(string nameProyect)
 		{
-			return backlogRepository.getIdByProjectName(nameProyect);
+			if (nameProyect != string.Empty)
+			{
+				return backlogRepository.getIdByProjectName(nameProyect);
+			}
+			else
+			{
+				Console.WriteLine("Error: El campo Name del Proyecto no puede ser vacio");
+				return -1;
+			}
 		}
 
 		public UserStories getUserStoryById(int? id)
@@ -29,7 +45,14 @@ namespace QUICKIFYService.Backlog
 
 		public IEnumerable<Users> getTeamUsersByProjectName(string nameProyect)
 		{
-			return backlogRepository.getTeamUsersByProjectName(nameProyect);
+			if (nameProyect != string.Empty)
+			{
+				return backlogRepository.getTeamUsersByProjectName(nameProyect);
+			}
+			else {
+				Console.WriteLine("Error: El campo Name del Proyecto no puede ser vacio");
+				return null;
+			}
 		}
 
 		public void addUserStory(UserStories userStories)

@@ -15,7 +15,16 @@ namespace QUICKIFYService.Task
 
 		public IEnumerable<UserStories> getTasksByNameProyect(string nameProyect, string email)
 		{
-			return tasksRepository.getTasksByNameProyect(nameProyect, email);
+			if (nameProyect != string.Empty && email != string.Empty)
+			{
+				return tasksRepository.getTasksByNameProyect(nameProyect, email);
+			}
+			else
+			{
+				Console.WriteLine("Error: El campo Nombre no puede ser vacio");
+				return null;
+			}
+				
 		}
 
 		public void getDispose()

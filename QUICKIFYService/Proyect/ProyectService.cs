@@ -15,7 +15,16 @@ namespace QUICKIFYService.Proyect
 
 		public IEnumerable<Proyects> getProjectsByEmailFromTheUser(string emailUser)
 		{
-			return proyectRepository.getProjectsByEmailFromTheUser(emailUser);
+			if (emailUser != string.Empty)
+			{
+				return proyectRepository.getProjectsByEmailFromTheUser(emailUser);
+			}
+			else
+			{
+				Console.WriteLine("Error: El campo Email no puede ser vacio");
+				return null;
+			}
+				
 		}
 
 		public void getDispose()
@@ -30,7 +39,16 @@ namespace QUICKIFYService.Proyect
 
 		public IEnumerable<Users> getUsers(string email)
 		{
-			return proyectRepository.getUsers(email);
+			
+			if (email != string.Empty)
+			{
+				return proyectRepository.getUsers(email);
+			}
+			else
+			{
+				Console.WriteLine("Error: El campo Email no puede ser vacio");
+				return null;
+			}
 		}
 
 		public IEnumerable<Role> getRole()

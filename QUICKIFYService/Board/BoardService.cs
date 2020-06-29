@@ -15,7 +15,15 @@ namespace QUICKIFYService.Board
 
 		public IEnumerable<UserStories> getUserStoriesByNameProyect(string nameProyect)
 		{
-			return boardRepository.getUserStoriesByNameProyect(nameProyect);
+			if (nameProyect != string.Empty)
+			{
+				return boardRepository.getUserStoriesByNameProyect(nameProyect);
+			}
+			else {
+				Console.WriteLine("Error: El campo Nombre no puede ser vacio");
+				return null;
+			}
+			
 		}
 
 	}
