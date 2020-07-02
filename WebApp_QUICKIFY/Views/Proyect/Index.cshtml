@@ -10,53 +10,105 @@
     SI657_Entities db = new SI657_Entities();
 }
 
+<div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+    <div class="container-fluid">
+        <div class="page-header-content">
+            <br />
+            <br />
+            <br />
+            <h1 class="page-header-title">
+                <div class="page-header-icon"><i data-feather="filter"></i></div>
+                <span>Proyectos</span>
+            </h1>
+            <div class="page-header-subtitle">Aquí puede visualizar todos los proyectos en el cual participa.</div>
+        </div>
+    </div>
+
+</div>
+<body>
+    <div class="container-fluid mt-n10">
+        <div class="row">
+            <div class="col-lg-4 col-xl-3 mb-4">
+
+                <div class="col-xl-12 col-lg-9 col-md-8 col-sm-11">
+                    <div class="card text-center h-100">
+                        <div class="card-body px-5 pt-5 d-flex flex-column">
+                            <div>
+                                <div class="h3 text-primary font-weight-300">Crear</div>
+                                <p class="text-muted mb-4">Crear una proyecto e invitar a nuevos miembros</p>
+                            </div>
+                            <div class="icons-org-create align-items-center mx-auto mt-auto"><i class="icon-users" data-feather="users"></i><i class="icon-plus fas fa-plus"></i></div>
+                        </div>
+                        <div class="card-footer bg-transparent px-5 py-4">
+                            <div class="small text-center">
+                            <a class="btn btn-block btn-primary" href="@Url.Action("Create", "Proyect")">Crear Proyecto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<br/>
+                <div class="col-xl-12 col-lg-9 col-md-8 col-sm-11">
+                    <div class="card text-center h-100">
+                        <div class="card-body px-5 pt-5 d-flex flex-column align-items-between">
+                            <div>
+                                <div class="h3 text-secondary font-weight-300">Unirse</div>
+                                <p class="text-muted mb-4">Formar parte de un proyecto existente</p>
+                            </div>
+                            <div class="icons-org-join align-items-center mx-auto"><i class="icon-user" data-feather="user"></i><i class="icon-arrow fas fa-long-arrow-alt-right"></i><i class="icon-users" data-feather="users"></i></div>
+                        </div>
+                        <div class="card-footer bg-transparent px-5 py-4">
+                            <div class="small text-center"><a class="btn btn-block btn-secondary" href="multi-tenant-join.html">Unirse a un Proyecto</a></div>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+            <div class="col-lg-4 col-xl-9 mb-4">
+                <div class="card mb-4">
+                    <div class="card-header">Mis Proyectos</div>
+                    <div class="card-body">
+                        <div class="datatable table-responsive">
+                            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>
+                                            Proyecto
+                                        </th>
+                                        <th>
+                                            Cargo
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody style="color:black;">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a href="@Url.Action("PassKanban", "Proyect", new { name = db.Proyects.Find(item.Id).Name })" title="Abrir Proyecto" class="btn btn-primary btn-icon"><i data-feather="external-link"></i></a>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => db.Proyects.Find(item.Id).Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => db.Proyects.Find(item.Id).Team.Where(s => s.Users.Email == AuthController.Static_Email).FirstOrDefault().Role.Name)
+
+                                            </td>
 
 
 
-<h3 style="color: black;"><strong>Proyectos</strong></h3>
-<br />
-<p>
-    @Html.ActionLink("Crear Proyecto", "Create", null, new { @class = "btn btn-primary", @id = "btn_Proyect_Crear" })
-</p>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<br />
-<br />
+            
 
-
-<table style="color:black;" class="table">
-    <thead class="thead-light">
-        <tr>
-            <th scope="col">
-                <i class="fas fa-folder-open fa-sm fa-fw mr-2 text-gray-600"></i>
-                &nbsp; &nbsp;&nbsp; Proyecto
-            </th>
-            <th scope="col">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-600"></i>
-                &nbsp; &nbsp;&nbsp;Cargo
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th scope="row">
-                    <i class="fas fa-folder-open fa-sm fa-fw mr-2 text-gray-500"></i>
-                    &nbsp; &nbsp;&nbsp;
-                    @Html.DisplayFor(modelItem => db.Proyects.Find(item.Id).Name)
-
-                </th>
-                <td>
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-500"></i>
-                    &nbsp; &nbsp;&nbsp;
-                    @Html.DisplayFor(modelItem => db.Proyects.Find(item.Id).Team.Where(s => s.Users.Email == AuthController.Static_Email).FirstOrDefault().Role.Name)
-                    @Html.ActionLink("Abrir Proyecto", "PassKanban", new { name = db.Proyects.Find(item.Id).Name }, new { id = "btn_Proyect_Open" , @class = "btn btn-primary", @style = "float: right;" })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<br />
-<br />
-
+        </div>
+</body>

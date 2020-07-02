@@ -138,14 +138,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\demo\chart-area-demo.js" />
+    <Content Include="assets\demo\chart-bar-demo.js" />
+    <Content Include="assets\demo\datatables-demo.js" />
+    <Content Include="assets\img\drawkit-charts-and-graphs.svg" />
+    <Content Include="assets\img\drawkit-content-man-alt.svg" />
+    <Content Include="assets\img\drawkit-developer-woman-flush.svg" />
+    <Content Include="assets\img\drawkit-developer-woman.svg" />
+    <Content Include="assets\img\undraw_posting_photo.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\sb-customizer.js" />
+    <Content Include="js\scripts.js" />
     <Content Include="Resources\css\sb-admin-2.css" />
     <Content Include="Resources\css\sb-admin-2.min.css" />
     <Content Include="Resources\img\logo.jpg" />
@@ -1926,7 +1937,16 @@
     <Content Include="Resources\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Resources\vendor\jquery\jquery.min.map" />
     <Content Include="Resources\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="assets\fonts\metropolis\Metropolis-Black.otf" />
+    <Content Include="assets\fonts\metropolis\Metropolis-Bold.otf" />
+    <Content Include="assets\fonts\metropolis\Metropolis-Light.otf" />
+    <Content Include="assets\fonts\metropolis\Metropolis-Medium.otf" />
+    <Content Include="assets\fonts\metropolis\Metropolis-MediumItalic.otf" />
+    <Content Include="assets\fonts\metropolis\Metropolis-Regular.otf" />
+    <Content Include="assets\fonts\metropolis\Metropolis-RegularItalic.otf" />
+    <Content Include="assets\fonts\metropolis\Metropolis-SemiBold.otf" />
     <None Include="Properties\PublishProfiles\QUICKIFY - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\WebAppQUICKIFY - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -4,7 +4,7 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 
 <html>
 <head>
@@ -86,4 +86,86 @@
 
 </body>
 
+</html>*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" />
+    <meta name="author" />
+    <title>SignUp</title>
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gradient-primary-to-secondary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Crear una Cuenta !</h3></div>
+                                    <div class="card-body">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <form>
+
+                                            <div class="form-group">
+                                                <label class="mb-1">Nombre y Apellidos</label>
+                                               
+                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { qid = "txt_Auth_Name", @type = "text", @class = "form-control form-control-solid py-4" } })
+                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <label class="mb-1">Email</label>
+                                                   
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "txt_Auth_Email", @class = "form-control form-control-solid py-4", @type = "email" } })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label class="mb-1">Contraseña</label>
+
+                                                    
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @id = "txt_Auth_Password", @type = "password", @class = "form-control form-control-solid py-4" } })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+
+                                            <br />
+                                            <div class="form-group">
+                                                <input type="submit" value="Registrar" class="btn btn-primary btn-user btn-block" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <div class="small"><a href="@Url.Action("Login", "Auth")">¿Ya tienes una cuenta? Login!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </main>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/js/scripts.js"></script>
+
+    <script src="~/js/sb-customizer.js"></script>
+</body>
 </html>

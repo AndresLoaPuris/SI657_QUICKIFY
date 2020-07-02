@@ -10,76 +10,105 @@
 }
 
 
-<h4><strong>Backlog</strong></h4>
-@if (Model.Where(s => s.StateKanban != "TERMINADO").Count() == 1)
-{
-    <h6><strong>@Model.Where(s => s.StateKanban != "TERMINADO").Count() Historia de Usuario Pendiente</strong></h6>
-}
-else
-{
-    <h6><strong>@Model.Where(s => s.StateKanban != "TERMINADO").Count() Historias de Usuario Pendiente</strong></h6>
-}
+<div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+    <div class="container-fluid">
+        <div class="page-header-content">
 
-<br />
-<p>
-    @Html.ActionLink("Crear Historia de Usuario", "Create", null, new { @id = "btn_HU_Crear", @class = "btn btn-primary" })
-</p>
-<br />
-<table style="color: black;" class="table">
-    <thead class="thead-light">
-        <tr>
-            <th scope="col"></th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Sprint)
-            </th>
-            <th scope="col">
-                @Html.DisplayName("Responsable")
-            </th>
-            <th scope="col">
-                @Html.DisplayName("Titulo")
-            </th>
+            <h1 class="page-header-title">
+                <div class="page-header-icon"><i data-feather="archive"></i></div>
+                <span>Backlog</span>
+            </h1>
+            
+            @if (Model.Where(s => s.StateKanban != "TERMINADO").Count() == 1)
+            {
+                <div class="page-header-subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Model.Where(s => s.StateKanban != "TERMINADO").Count() Historia de Usuario Pendiente</div>
+            }
+            else
+            {
+                <div class="page-header-subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Model.Where(s => s.StateKanban != "TERMINADO").Count() Historias de Usuario Pendiente</div>
+            }
 
-            <th scope="col">
-                @Html.DisplayName("Descripcion")
-            </th>
-            <th scope="col">
-                @Html.DisplayName("N° Tareas")
-            </th>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-n10">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-xl-12 mb-4">
+            <div class="card mb-4">
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
+                <div class="card-body">
 
-            <th scope="row">
-                <a href="@Url.Action("Edit","Backlog",new { id = item.Id })" title="Editar Historia de Usuario" class="btn btn-circle btn-sm btn-primary"><i class="fas fa-pen"></i></a>
-                &nbsp;&nbsp;&nbsp;
-                <a href="@Url.Action("Delete","Backlog",new { id = item.Id })" title="Eliminar Historia de Usuario" class="btn btn-circle btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-            </th>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sprint)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Users.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
+                    <p>
+                        @Html.ActionLink("Crear Historia de Usuario", "Create", null, new { @id = "btn_HU_Crear", @class = "btn btn-primary" })
+                    </p>
+                    <br />
+                    <div class="datatable table-responsive">
+                        <table style="color: black;" class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">
+                                        @Html.DisplayNameFor(model => model.Sprint)
+                                    </th>
+                                    <th scope="col">
+                                        @Html.DisplayName("Responsable")
+                                    </th>
+                                    <th scope="col">
+                                        @Html.DisplayName("Titulo")
+                                    </th>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @item.Tasks.Where( s => s.UserStory_Id == item.Id && s.isDelete == 0).Count()
-            </td>
-            <td>
-                @*@Html.ActionLink("Añadir Tareas", "Create", "Tasks", new { id = item.Id }, new { @class = "btn btn-primary" })*@
-                <a href="@Url.Action("Tasks","Tasks",new { id = item.Id })" title="Tareas" class="btn btn-circle btn-sm btn-primary"><i class="fas fa-layer-group"></i></a>
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+                                    <th scope="col">
+                                        @Html.DisplayName("Descripcion")
+                                    </th>
+                                    <th scope="col">
+                                        @Html.DisplayName("N° Tareas")
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <th scope="row">
+                                            <a href="@Url.Action("Edit","Backlog",new { id = item.Id })" title="Editar Historia de Usuario" class="btn btn-primary btn-sm btn-icon"><i class="fas fa-pen"></i></a>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <a href="@Url.Action("Delete","Backlog",new { id = item.Id })" title="Eliminar Historia de Usuario" class="btn btn-danger btn-sm btn-icon"><i class="fas fa-trash"></i></a>
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Sprint)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Users.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isDelete == 0).Count()
+                                        </td>
+                                        <td>
+                                            @*@Html.ActionLink("Añadir Tareas", "Create", "Tasks", new { id = item.Id }, new { @class = "btn btn-primary" })*@
+                                            <a href="@Url.Action("Tasks","Tasks",new { id = item.Id })" title="Tareas" class="btn btn-primary btn-sm btn-icon"><i class="fas fa-layer-group"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    
+
+                    </div>
+                </div>
+        </div>
+
+    </div>
+
+</div>
+
