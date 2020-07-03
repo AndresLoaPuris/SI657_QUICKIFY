@@ -48,21 +48,7 @@ namespace WebApp_QUICKIFY.Controllers
             return RedirectToAction("Index");
         }
 
-        private bool CheckDateRange(DateTime date)
-        {
-            DateTime dateNow = DateTime.Now.AddDays(-1);
-            DateTime dateFuture = DateTime.Now.AddYears(3);
-
-
-            if (dateNow <= date && date <= dateFuture)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        
 
         public ActionResult Create()
         {
@@ -77,7 +63,7 @@ namespace WebApp_QUICKIFY.Controllers
             tasks.isDelete = 0;
             tasks.isCompleted = 0;
 
-            if (ModelState.IsValid && CheckDateRange(tasks.IntendedDate))
+            if (ModelState.IsValid )
             {
                 tasksService.addTask(tasks);
                 return RedirectToAction("Tasks", new { id = Static_HU });
@@ -103,7 +89,7 @@ namespace WebApp_QUICKIFY.Controllers
             tasks.isDelete = Static_isDelete;
             tasks.isCompleted = Static_isCompleted;
 
-            if (ModelState.IsValid && CheckDateRange(tasks.IntendedDate))
+            if (ModelState.IsValid)
             {
                 tasksService.editTask(tasks);
                 return RedirectToAction("Tasks", new { id = Static_HU });

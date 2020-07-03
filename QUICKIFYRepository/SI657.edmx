@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SI657Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SI657Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="IntendedTimes">
           <Key>
             <PropertyRef Name="Id" />
@@ -39,7 +39,7 @@
           <Property Name="isDelete" Type="int" Nullable="false" />
           <Property Name="UserStory_Id" Type="int" Nullable="false" />
           <Property Name="isCompleted" Type="int" Nullable="false" />
-          <Property Name="IntendedDate" Type="datetime" Nullable="false" />
+          <Property Name="IntendedDate" Type="int" Nullable="false" StoreGeneratedPattern="None" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -194,8 +194,7 @@
             <End Role="Team" EntitySet="Team" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SI657Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -237,9 +236,9 @@
           <Property Name="isDelete" Type="Int32" Nullable="false" />
           <Property Name="UserStory_Id" Type="Int32" Nullable="false" />
           <Property Name="isCompleted" Type="Int32" Nullable="false" />
-          <Property Name="IntendedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="IntendedTimes" Relationship="Self.IntendedTimes_Tasks" FromRole="Tasks" ToRole="IntendedTimes" />
           <NavigationProperty Name="UserStories" Relationship="Self.Tarea_HistoriaUsuario" FromRole="Tasks" ToRole="UserStories" />
+          <Property Name="IntendedDate" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -402,6 +401,9 @@
             <End Role="UserStories" EntitySet="UserStories" />
           </AssociationSet>
         </EntityContainer>
+        <ComplexType Name="ComplexType1">
+          <Property Type="DateTime" Name="IntendedDate" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -438,13 +440,13 @@
           <EntitySetMapping Name="Tasks">
             <EntityTypeMapping TypeName="SI657Model.Tasks">
               <MappingFragment StoreEntitySet="Tasks">
+                <ScalarProperty Name="IntendedDate" ColumnName="IntendedDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="isDelete" ColumnName="isDelete" />
                 <ScalarProperty Name="UserStory_Id" ColumnName="UserStory_Id" />
                 <ScalarProperty Name="isCompleted" ColumnName="isCompleted" />
-                <ScalarProperty Name="IntendedDate" ColumnName="IntendedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

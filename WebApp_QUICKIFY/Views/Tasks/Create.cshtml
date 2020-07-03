@@ -42,8 +42,8 @@
                                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-sm-3">
-                                    <h6 style="color: black;">Fecha Prevista</h6>
-                                    @Html.EditorFor(model => model.IntendedDate, new { htmlAttributes = new { @id = "txt_Tasks_IntendedDate", @class = "form-control", @type = "datetime-local", @style = "color: black;" } })
+                                    <h6 style="color: black;">Horas</h6>
+                                    @Html.EditorFor(model => model.IntendedDate, new { htmlAttributes = new { @id = "txt_Tasks_IntendedDate", @class = "form-control", @type = "number", @style = "color: black;" } })
                                     @Html.ValidationMessageFor(model => model.IntendedDate, "", new { @class = "text-danger" })
                                 </div>
                             </div>

@@ -11,20 +11,12 @@ namespace QUICKIFYRepository
 {
     using System;
     using System.Collections.Generic;
-	using System.ComponentModel.DataAnnotations;
-
-	public partial class IntendedTimes
+    
+    public partial class IntendedTimes
     {
         public int Id { get; set; }
-        
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime Start { get; set; }
-        
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime Finish { get; set; }
-        
         public int Task_Id { get; set; }
     
         public virtual Tasks Tasks { get; set; }

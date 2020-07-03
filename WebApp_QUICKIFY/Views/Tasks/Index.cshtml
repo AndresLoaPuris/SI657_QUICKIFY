@@ -58,7 +58,10 @@
                                             @Html.DisplayName("Descripcion")
                                         </th>
                                         <th scope="col">
-                                            @Html.DisplayName("Fecha prevista")
+                                            Horas
+                                        </th>
+                                        <th scope="col">
+                                            Estado
                                         </th>
                                         <th></th>
                                     </tr>
@@ -68,28 +71,40 @@
                                     {
                                         if (task.isDelete == 0)
                                         {
-                                            <tr>
-                                                <th scope="row">
-                                                    @Html.DisplayFor(modelItem => task.Title)
-                                                </th>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => task.Description)
-                                                </td>
-                                                <td>
-                                                    @task.IntendedDate.ToString("dddd, dd MMMM yyyy")
-                                                </td>
-                                                <td>
+                                    <tr>
+                                        <th scope="row">
+                                            @Html.DisplayFor(modelItem => task.Title)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => task.Description)
+                                        </td>
+                                        <td>
+                                            @task.IntendedDate
+                                        </td>
+                                        @if (task.isCompleted == 0)
+                                        {
+                                            <td>
+                                                PENDIENTE
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                FINALIZADO
+                                            </td>
+                                        }
+                                        <td>
 
-                                                    @if (task.isCompleted == 0)
-                                                    {
-                                                        @Html.ActionLink("Finalizar", "FinalizarTask", new { id = task.Id, UserStory_id = item.Id }, new { @id = "btn_Tasks_Finalizar", @class = "btn btn-danger" })
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.ActionLink("Restaurar", "RestaurarTask", new { id = task.Id, UserStory_id = item.Id }, new { @id = "btn_Tasks_Restaurar", @class = "btn btn-primary" })
-                                                    }
-                                                </td>
-                                            </tr>
+                                            @if (task.isCompleted == 0)
+                                            {
+                                                @Html.ActionLink("Finalizar", "FinalizarTask", new { id = task.Id, UserStory_id = item.Id }, new { @id = "btn_Tasks_Finalizar", @class = "btn btn-danger" })
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink("Restaurar", "RestaurarTask", new { id = task.Id, UserStory_id = item.Id }, new { @id = "btn_Tasks_Restaurar", @class = "btn btn-primary" })
+                                            }
+                                        </td>
+                                    </tr>
                                         }
 
                                     }

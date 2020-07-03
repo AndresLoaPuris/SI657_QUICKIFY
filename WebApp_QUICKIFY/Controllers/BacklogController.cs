@@ -20,6 +20,11 @@ namespace WebApp_QUICKIFY.Controllers
 
         private static string Static_StateKanban { get; set; }
 
+        public class Sprint {
+            public int Id { get; set; }
+            public string Name { get; set; }
+        }
+
         public ActionResult Index()
         {
             return View(backlogService.getUserStoriesByProjectName(ProyectController.Static_Name));
@@ -28,6 +33,20 @@ namespace WebApp_QUICKIFY.Controllers
       
         public ActionResult Create()
         {
+            IEnumerable<Sprint> IESprint = new List<Sprint>() {
+                new Sprint { Id=1, Name="Sprint N° 1"},
+                new Sprint { Id=2, Name="Sprint N° 2"},
+                new Sprint { Id=3, Name="Sprint N° 3"},
+                new Sprint { Id=4, Name="Sprint N° 4"},
+                new Sprint { Id=5, Name="Sprint N° 5"},
+                new Sprint { Id=6, Name="Sprint N° 6"},
+                new Sprint { Id=7, Name="Sprint N° 7"},
+                new Sprint { Id=8, Name="Sprint N° 8"},
+                new Sprint { Id=9, Name="Sprint N° 9"},
+                new Sprint { Id=10, Name="Sprint N° 10"}
+            }.AsEnumerable();
+
+            ViewBag.Sprint = new SelectList(IESprint, "Id", "Name");
             ViewBag.User_Id = new SelectList(backlogService.getTeamUsersByProjectName(ProyectController.Static_Name), "Id", "Name");
             return View();
         }
@@ -46,7 +65,20 @@ namespace WebApp_QUICKIFY.Controllers
                 return RedirectToAction("Index");
             }
 
+            IEnumerable<Sprint> IESprint = new List<Sprint>() {
+                new Sprint { Id=1, Name="Sprint N° 1"},
+                new Sprint { Id=2, Name="Sprint N° 2"},
+                new Sprint { Id=3, Name="Sprint N° 3"},
+                new Sprint { Id=4, Name="Sprint N° 4"},
+                new Sprint { Id=5, Name="Sprint N° 5"},
+                new Sprint { Id=6, Name="Sprint N° 6"},
+                new Sprint { Id=7, Name="Sprint N° 7"},
+                new Sprint { Id=8, Name="Sprint N° 8"},
+                new Sprint { Id=9, Name="Sprint N° 9"},
+                new Sprint { Id=10, Name="Sprint N° 10"}
+            }.AsEnumerable();
 
+            ViewBag.Sprint = new SelectList(IESprint, "Id", "Name");
             ViewBag.User_Id = new SelectList(backlogService.getTeamUsersByProjectName(ProyectController.Static_Name), "Id", "Name");
 
             return View(userStories);
@@ -58,7 +90,21 @@ namespace WebApp_QUICKIFY.Controllers
 
             UserStories userStories = backlogService.getUserStoryById(id);
             Static_StateKanban = userStories.StateKanban;
-            ViewBag.User_Id = new SelectList(backlogService.getTeamUsersByProjectName(ProyectController.Static_Name), "Id", "Name");
+            IEnumerable<Sprint> IESprint = new List<Sprint>() {
+                new Sprint { Id=1, Name="Sprint N° 1"},
+                new Sprint { Id=2, Name="Sprint N° 2"},
+                new Sprint { Id=3, Name="Sprint N° 3"},
+                new Sprint { Id=4, Name="Sprint N° 4"},
+                new Sprint { Id=5, Name="Sprint N° 5"},
+                new Sprint { Id=6, Name="Sprint N° 6"},
+                new Sprint { Id=7, Name="Sprint N° 7"},
+                new Sprint { Id=8, Name="Sprint N° 8"},
+                new Sprint { Id=9, Name="Sprint N° 9"},
+                new Sprint { Id=10, Name="Sprint N° 10"}
+            }.AsEnumerable();
+
+            ViewBag.Sprint = new SelectList(IESprint, "Id", "Name", userStories.Sprint);
+            ViewBag.User_Id = new SelectList(backlogService.getTeamUsersByProjectName(ProyectController.Static_Name), "Id", "Name", userStories.User_Id);
             return View(userStories);
         }
 
@@ -76,7 +122,21 @@ namespace WebApp_QUICKIFY.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.User_Id = new SelectList(backlogService.getTeamUsersByProjectName(ProyectController.Static_Name), "Id", "Name");
+            IEnumerable<Sprint> IESprint = new List<Sprint>() {
+                new Sprint { Id=1, Name="Sprint N° 1"},
+                new Sprint { Id=2, Name="Sprint N° 2"},
+                new Sprint { Id=3, Name="Sprint N° 3"},
+                new Sprint { Id=4, Name="Sprint N° 4"},
+                new Sprint { Id=5, Name="Sprint N° 5"},
+                new Sprint { Id=6, Name="Sprint N° 6"},
+                new Sprint { Id=7, Name="Sprint N° 7"},
+                new Sprint { Id=8, Name="Sprint N° 8"},
+                new Sprint { Id=9, Name="Sprint N° 9"},
+                new Sprint { Id=10, Name="Sprint N° 10"}
+            }.AsEnumerable();
+
+            ViewBag.Sprint = new SelectList(IESprint, "Id", "Name", userStories.Sprint);
+            ViewBag.User_Id = new SelectList(backlogService.getTeamUsersByProjectName(ProyectController.Static_Name), "Id", "Name", userStories.User_Id);
             return View(userStories);
         }
 

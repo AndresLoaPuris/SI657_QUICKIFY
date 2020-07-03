@@ -11,8 +11,7 @@ namespace QUICKIFYRepository
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Tasks
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,20 +21,12 @@ namespace QUICKIFYRepository
         }
     
         public int Id { get; set; }
-        
         public string Title { get; set; }
-        
         public string Description { get; set; }
-        
         public int isDelete { get; set; }
-        
         public int UserStory_Id { get; set; }
-        
         public int isCompleted { get; set; }
-        
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm:ss}", ApplyFormatInEditMode = true)]
-        public System.DateTime IntendedDate { get; set; }
+        public int IntendedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IntendedTimes> IntendedTimes { get; set; }

@@ -10,17 +10,9 @@
 namespace QUICKIFYRepository
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Team
+    public partial class ComplexType1
     {
-        public int Id { get; set; }
-        public int User_Id { get; set; }
-        public int Proyect_Id { get; set; }
-        public int Role_Id { get; set; }
-    
-        public virtual Proyects Proyects { get; set; }
-        public virtual Role Role { get; set; }
-        public virtual Users Users { get; set; }
+        public System.DateTime IntendedDate { get; set; }
     }
 }

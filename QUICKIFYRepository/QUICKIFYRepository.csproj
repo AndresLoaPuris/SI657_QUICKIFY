@@ -54,6 +54,9 @@
     <Compile Include="Auth\AuthRepository.cs" />
     <Compile Include="Backlog\BacklogRepository.cs" />
     <Compile Include="Board\BoardRepository.cs" />
+    <Compile Include="ComplexType1.cs">
+      <DependentUpon>SI657.tt</DependentUpon>
+    </Compile>
     <Compile Include="IntendedTimes.cs">
       <DependentUpon>SI657.tt</DependentUpon>
     </Compile>

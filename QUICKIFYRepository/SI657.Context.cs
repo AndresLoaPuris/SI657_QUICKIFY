@@ -10,7 +10,6 @@
 namespace QUICKIFYRepository
 {
     using System;
-    using System.Data.Common;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -20,8 +19,7 @@ namespace QUICKIFYRepository
             : base("name=SI657_Entities")
         {
         }
-
- 
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QUICKIFYRepository.UserStories>
+﻿
 
 @{
     ViewBag.Title = "Kanban";
@@ -7,117 +7,32 @@
 
 
 
-    <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
-        <div class="container-fluid">
-            <div class="page-header-content">
+<div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+    <div class="container-fluid">
+        <div class="page-header-content">
 
-                <h1 class="page-header-title">
-                    <div class="page-header-icon"><i data-feather="trello"></i></div>
-                    <span>Tablero Kanban</span>
-                </h1>
-                <div class="page-header-subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @DateTime.Now.ToString("dddd, dd MMMM yyyy")</div>
-            </div>
-        </div>
-    </div>
-<body>
-    <div class="container-fluid mt-n10">
-
+            <h1 class="page-header-title">
+                <div class="page-header-icon"><i data-feather="trello"></i></div>
+                <span>Tablero Kanban</span>
+            </h1>
+            <div class="page-header-subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @DateTime.Now.ToString("dddd, dd MMMM yyyy")</div>
+            <br />
+            <br />
+            @using (Html.BeginForm())
+            {
         <div class="row">
-            <div class="col-lg-4 col-xl-4 mb-4">
-                <div class="card mb-4">
-                    <div class="card-header">POR HACER</div>
-                    <div class="card-body">
-                        @foreach (var item in Model)
-                        {
-
-                            if (item.StateKanban == "POR HACER" && item.isDelete == 0)
-                            {
-                                <!-- AQUI TARJETAS -->
-                                <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-pink h-100">
-                           
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">
-                                                <div class=" font-weight-bold text-pink mb-1">@item.Title</div>
-                                                <div class="text-xs font-weight-bold text mb-1">@item.Users.Name </div>
-                                                <div class="text-xs font-weight-bold text text-uppercase mb-1">@item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isCompleted == 1 && s.isDelete == 0).Count() / @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isDelete == 0).Count() Tareas Realizadas</div>
-                                            </div>
-                                    
-                                        </div>
-                                    </div>
-                                </div>
-                                <br />
-                            }
-
-                        }
-                    </div>
-                </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="col-sm-3">
+                @Html.DropDownList("Sprint", null, htmlAttributes: new { @class = "form-control", @style = "color: black;" })
 
             </div>
-            <div class="col-lg-4 col-xl-4 mb-4">
-                <div class="card mb-4">
-                    <div class="card-header">EN CURSO</div>
-                    <div class="card-body">
-                        @foreach (var item in Model)
-                        {
-
-                            if (item.StateKanban == "EN CURSO" && item.isDelete == 0)
-                            {
-                                <!-- AQUI TARJETAS -->
-                                <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-pink h-100">
-
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">
-                                                <div class=" font-weight-bold text-pink mb-1">@item.Title</div>
-                                                <div class="text-xs font-weight-bold text mb-1">@item.Users.Name </div>
-                                                <div class="text-xs font-weight-bold text text-uppercase mb-1">@item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isCompleted == 1 && s.isDelete == 0).Count() / @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isDelete == 0).Count() Tareas Realizadas</div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <br />
-                            }
-
-                        }
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-lg-4 col-xl-4 mb-4">
-                <div class="card mb-4">
-                    <div class="card-header">TERMINADO</div>
-                    <div class="card-body">
-                        @foreach (var item in Model)
-                        {
-
-                            if (item.StateKanban == "TERMINADO" && item.isDelete == 0)
-                            {
-                                <!-- AQUI TARJETAS -->
-                                <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-pink h-100">
-
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">
-                                                <div class=" font-weight-bold text-pink mb-1">@item.Title</div>
-                                                <div class="text-xs font-weight-bold text mb-1">@item.Users.Name </div>
-                                                <div class="text-xs font-weight-bold text text-uppercase mb-1">@item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isCompleted == 1 && s.isDelete == 0).Count() / @item.Tasks.Where(s => s.UserStory_Id == item.Id && s.isDelete == 0).Count() Tareas Realizadas</div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <br />
-                            }
-                        }
-                    </div>
-                </div>
-
-            </div>
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn btn-orange btn-icon"><i class="fas fa-search"></i></button>
         </div>
 
+            }
 
-
-    </div>
-</body>
+        </div>
+            </div>
+</div>
